@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://cwrrp71axtntp"]
+
+[ext_resource type="Script" uid="uid://bdyx2rloqhqnn" path="res://Scenes/player/player.gd" id="1_e41v5"]
+[ext_resource type="Texture2D" uid="uid://q0cghfj8gn7n" path="res://Assets/Sprites/Planes/planeRed1.png" id="1_mxepk"]
+[ext_resource type="Texture2D" uid="uid://wcfvmyu4tg8j" path="res://Assets/Sprites/Planes/planeRed2.png" id="2_e41v5"]
+[ext_resource type="Texture2D" uid="uid://l1m1yptx56t" path="res://Assets/Sprites/Planes/planeRed3.png" id="3_ca0mu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6upyo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mxepk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_e41v5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ca0mu")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mxepk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_e41v5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ca0mu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xxarj"]
+radius = 37.01351
+
+[node name="Player" type="CharacterBody2D" unique_id=11828796]
+position = Vector2(219, 71)
+script = ExtResource("1_e41v5")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=798874065]
+sprite_frames = SubResource("SpriteFrames_6upyo")
+animation = &"fly"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1752151081]
+shape = SubResource("CircleShape2D_xxarj")
