@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dphw83up3o4hs"]
+
+[ext_resource type="Script" uid="uid://dgor7w6wtuwe" path="res://Scenes/main/main.gd" id="1_4etoo"]
+[ext_resource type="Texture2D" uid="uid://duiy5x8u0hr7r" path="res://Assets/Sprites/background.png" id="1_w1fgp"]
+[ext_resource type="PackedScene" uid="uid://cwrrp71axtntp" path="res://Scenes/player/player.tscn" id="2_4etoo"]
+[ext_resource type="PackedScene" uid="uid://b8dso5ckhe82b" path="res://Scenes/obstacle/obstacle.tscn" id="4_wcurd"]
+
+[node name="Main" type="Node2D" unique_id=1073502136]
+script = ExtResource("1_4etoo")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=126079700]
+position = Vector2(3, -44)
+scale = Vector2(2, 2)
+texture = ExtResource("1_w1fgp")
+centered = false
+
+[node name="Player" parent="." unique_id=11828796 instance=ExtResource("2_4etoo")]
+position = Vector2(227, 329)
+
+[node name="Obstacle" parent="." unique_id=284179188 instance=ExtResource("4_wcurd")]
+position = Vector2(430, 277)
+scale = Vector2(2, 2)
+
+[connection signal="onGameStarted" from="Player" to="." method="_on_player_on_game_started"]
+[connection signal="onPlayerCrash" from="Obstacle" to="." method="_on_obstacle_on_player_crash"]
